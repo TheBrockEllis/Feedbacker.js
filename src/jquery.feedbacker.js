@@ -14,6 +14,8 @@
     // Create the defaults once
     var pluginName = "feedbacker";
     var defaults = {
+        width: 50,
+        height: 50,
         name: true,
         requireName: true,
         email: true,
@@ -55,7 +57,12 @@
             var questionMark = document.createElement("div");
 
             //add the necessary css class and insert the ? icon
-            $(questionMark).addClass("questionMark").text("?");
+            $(questionMark).addClass("questionMark").css({
+                "width": this.settings.width + "px",
+                "height": this.settings.height + "px",
+                "line-height": this.settings.height + "px",
+                "bottom": "5px",
+                "right": "5px"}).text("?");
 
             //append the question mark div to the element
             $(this.element).append(questionMark);
@@ -67,8 +74,13 @@
             //create the div that will act and the feedback form
             var feedbackModal = document.createElement("div");
 
+            var modalBottom = this.settings.height + 15;
+            
             //add the necessary css class to the modal
-            $(feedbackModal).addClass("feedbackModal");
+            $(feedbackModal).addClass("feedbackModal").css({
+               "bottom": modalBottom + "px",
+               "right": "5px"
+            });
 
             //check for options and create HTML for the form
 
@@ -81,7 +93,7 @@
             if (this.settings.name === true) {
                 var formElement = document.createElement("input");
                 formElement.type = "text";
-                formElement.placeholder = "Your Name";
+                formElement.placeholder = "Name";
                 formElement.name = "name";
                 formElement.className = "formElement";
                 $(form).append(formElement);
@@ -90,7 +102,7 @@
             if (this.settings.email === true) {
                 var formElement = document.createElement("input");
                 formElement.type = "text";
-                formElement.placeholder = "Your Email";
+                formElement.placeholder = "Email";
                 formElement.name = "email";
                 formElement.className = "formElement";
                 $(form).append(formElement);
@@ -98,7 +110,7 @@
 
              if (this.settings.message === true) {
                 var formElement = document.createElement("textarea");
-                formElement.value = "Feedback = <3";
+                formElement.value = "Message";
                 formElement.name = "message";
                 formElement.className = "formElement formMessage";
                 $(form).append(formElement);
@@ -121,6 +133,7 @@
             });
 
             //when submit is clicked, send the form to the action
+            //proxy allows the scope of 'this' to be correct to access settings
             $(form).submit( $.proxy(this.submitForm, this));
 
         },
@@ -130,13 +143,13 @@
             event.preventDefault();
             $.post(this.settings.action, $(document.getElementsByName("feedbackerForm")).serialize())
             .done(function(data){
-                alert(data);
+                console.log(data);
             })
             .fail(function(data){
-                alert(data);
+                console.log(data);
             })
             .always(function(data){
-                alert(data);
+                console.log(data);
             });
 
         }
