@@ -1,0 +1,54 @@
+.questionMark {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-family: verdana, sans-serif;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    color: #b0b0b0;
+    position: absolute;
+    top: 90%;
+    right: 10px;
+}
+
+.questionMarkActive {
+    color: #000;
+    text-shadow: 1px 1px #b0b0b0;
+}
+
+.questionMark:hover {
+    cursor: pointer;
+}
+
+.feedbackModal {
+    padding-top: 10px;
+    padding-left: 15px;
+    width: 250px;
+    height: 150px;
+    background-color: #e0e0e0;
+    position: absolute;
+    bottom: 65px;
+    color: #b0b0b0;
+    right: 10px;
+    border-radius: 15px;
+    display: none;
+    font-size: 12px;
+    color: #b0b0b0;
+}
+
+.formElement {
+    margin-bottom: 10px;
+}
+
+.formMessage {
+    font-size: 12px;
+    font-family: verdana, sans-serif;
+    color: #b0b0b0;
+    width: 90%;
+}
+
+.formButton {
+    color: blue;
+}
