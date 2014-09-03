@@ -74,8 +74,8 @@
             //create the div that will act and the feedback form
             var feedbackModal = document.createElement("div");
 
-            var modalBottom = this.settings.height + 15;
-            
+            var modalBottom = this.settings.height + 25;
+
             //add the necessary css class to the modal
             $(feedbackModal).addClass("feedbackModal").css({
                "bottom": modalBottom + "px",
@@ -138,20 +138,46 @@
 
         },
         submitForm: function (event) {
-            console.log(this.settings);
-            console.log("Event: " + event);
+            //stops the actual submittal of form so that Feedback
+            //can handle it programmatically
             event.preventDefault();
-            $.post(this.settings.action, $(document.getElementsByName("feedbackerForm")).serialize())
-            .done(function(data){
-                console.log(data);
+
+            //this_ referrences the top level scope
+            var this_ = this;
+            var acknowledgement = this_.settings.acknowledgement;
+
+            $.ajax({
+                url: this.settings.action,
+                data: $(document.getElementsByName("feedbackerForm")).serialize(),
+                type: "post",
+                contentType: "application/json"
             })
-            .fail(function(data){
-                console.log(data);
+            .done(function(){
+                //proxy used to pass the global this scope to the next function
+                $.proxy(this_.showResult(acknowledgement), this)
+            })
+            .fail(function(a, b, c){
+                console.log( a + b + c)
+
+                //proxy used to pass the global this scope to the next function
+                $.proxy(this_.showResult("Uh oh. The feedbackzzzzzz was not submitted successfully. Try again later?"), this)
             })
             .always(function(data){
                 console.log(data);
+                setTimeout(function(){
+                    var modal = $(".feedbackModal");
+                    modal.hide();
+                    modal.find("form").show();
+                    modal.find("h1").remove();
+                    $(".questionMark").removeClass("questionMarkActive");
+                }, 3000)
             });
-
+        },
+        showResult: function (message) {
+            var this_ = this;
+            var modal = $(".feedbackModal");
+            modal.find("form").css("display", "none");
+            modal.append("<h1>"+message+"</h1>");
         }
     });
 
