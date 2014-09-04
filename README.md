@@ -43,8 +43,6 @@ The biggest hurdle to get over with a new app is actually getting users. Once yo
 Feedbacker.js is a passion project by the following [folks](https://github.com/TheBrockEllis/Feedbacker.js/graphs/contributors).
 
 [![The Brock Ellis](https://avatars3.githubusercontent.com/u/1606194?v=2&s=140)](http://thebrockellis.com)
---- |
-[Brock Ellis](http://thebrockellis.com) |
 
 ## Contributing
 
