@@ -31,7 +31,7 @@ The biggest hurdle to get over with a new app is actually getting users. Once yo
 
 ## Demos
 
-A demo of Feedbacker.js can be seen [here](https://github.com/TheBrockEllis/Feedbacker.js/demo/index.html).
+A demo of Feedbacker.js can be seen [here](https://thebrockellis.github.io/Feedbacker.js/demo/index.html).
 
 
 ## Parameters
