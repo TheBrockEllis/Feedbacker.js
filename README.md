@@ -28,6 +28,7 @@ The biggest hurdle to get over with a new app is actually getting users. Once yo
         acknowledgement: "Thanks!!"
 	});
 	```
+
 ## Demos
 
 ## Parameters
@@ -35,15 +36,15 @@ The biggest hurdle to get over with a new app is actually getting users. Once yo
 
 ## Frequently Asked Questions?
 
-- No one has asked any questions yet...when they do, we'll update these~
+- No one has asked any questions yet...when they do, we'll update these things!
 
 ## Contributors
 
-Feedbacker.js is a passion project by the following folks[contributors](https://github.com/jquery-boilerplate/boilerplate/graphs/contributors).
+Feedbacker.js is a passion project by the following [folks](https://github.com/TheBrockEllis/Feedbacker.js/graphs/contributors).
 
-[![Zeno Rocha](http://gravatar.com/avatar/e190023b66e2b8aa73a842b106920c93?s=70)](http://zenorocha.com) | [![Addy Osmani](http://gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275?s=70)](http://addyosmani.com) | [![Helder Santana](http://gravatar.com/avatar/63fb620ee7d14fc91030d4349d189b3e?s=70)](http://heldr.com)
---- | --- | --- | --- | --- | --- | ---
-[Zeno Rocha](http://zenorocha.com) | [Addy Osmani](http://addyosmani.com) | [Helder Santana](http://heldr.com)
+[![The Brock Ellis](https://avatars3.githubusercontent.com/u/1606194?v=2&s=140)](http://thebrockellis.com)
+--- |
+[Brock Ellis](http://thebrockellis.com) |
 
 ## Contributing
 

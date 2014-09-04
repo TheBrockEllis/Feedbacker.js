@@ -1,0 +1,37 @@
+{
+	"name": "feedbacker",
+	"title": "Feedbacker",
+	"description": "A lean plugin that enables instant feedback on any page",
+	"keywords": [
+        "feedbacker",
+		"feedback",
+        "users",
+		"form"
+	],
+	"version": "0.1.0",
+	"author": {
+		"name": "Brock Ellis",
+		"email": "brock@sharproot.comcom",
+		"url": "http://thebrockellis.com"
+	},
+	"maintainers": [
+		{
+			"name": "Brock Ellis",
+			"email": "brock@sharproot.com.com",
+			"url": "https://github.com/TheBrockEllis"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://zenorocha.mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/TheBrockEllis/Feedbacker.js/issues",
+	"homepage": "http://github.io/TheBrockEllis/Feedbacker.js",
+	"docs": "https://github.com/TheBrockEllis/Feedbacker.js#readme",
+	"download": "https://github.com/TheBrockEllis/Feedbacker.js/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.7"
+	}
+}

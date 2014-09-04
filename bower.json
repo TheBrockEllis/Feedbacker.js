@@ -1,18 +1,17 @@
 {
-	"name": "jquery-boilerplate",
-	"version": "3.3.4",
-	"homepage": "http://jqueryboilerplate.com",
+	"name": "feedbacker",
+	"version": "0.1.0",
+	"homepage": "http://github.io/TheBrockEllis/Feedbacker.js",
 	"authors": [
-		"Zeno Rocha <hi@zenorocha.com>"
+		"Brock Ellis <brock@sharproot.com>"
 	],
-	"description": "A jump-start for jQuery plugins development.",
-	"main": "src/jquery.boilerplate.js",
+	"description": "A lean plugin that enables instant feedback on any page.",
+	"main": "src/jquery.feedbacker.js",
 	"keywords": [
-		"jquery",
-		"plugin",
-		"boilerplate",
-		"jquery-plugin",
-		"jquery-boilerplate"
+        "feedbacker",
+		"feedback",
+        "users",
+		"form"
 	],
 	"license": "MIT"
 }
