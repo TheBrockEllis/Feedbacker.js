@@ -31,8 +31,23 @@ The biggest hurdle to get over with a new app is actually getting users. Once yo
 
 ## Demos
 
+A demo of Feedbacker.js can be seen [here](https://github.com/TheBrockEllis/Feedbacker.js/demo/index.html).
+
+
 ## Parameters
 
+| Param | Type | Description | Default |
+|-------|------|-------------|---------|
+| width | int | The width of the on-screen widget | 50 |
+| height | int | The height of the on-screen widget | 50 |
+| name | boolean | Should the 'name' form element be displayed | true |
+| requireName | boolean | Should the 'name' element be required | true |
+| email | boolean | Should the 'email' element be displayed | true |
+| requireEmail | boolean | Should the 'email' element be required | true |
+| message | boolean | Should the 'message' element be displayed | true |
+| requireMessage | boolean | Should the 'message' element be required | true |
+| action | string | The location where the form's data will be POSTed | http://www.yourdomain.com/feedbacker.php |
+| acknowledgement | string | The text that will be dispalyed to users upon a successful submission | "Thank you for your feedback!" |
 
 ## Frequently Asked Questions?
 
