@@ -37,7 +37,7 @@
     border-radius: 7px;
     display: none;
     font-size: 12px;
-    color: #b0b0b0;
+    font-family: verdana, sans-serif;
 }
 
 .feedbackModal::after {
@@ -54,6 +54,7 @@
 
 .formElement {
     margin-bottom: 10px;
+    border: 1px solid green;
 }
 
 .formMessage {
@@ -64,4 +65,10 @@
 }
 
 .formButton {
+    width: 50%;
+    color: #FFF;
+    border: none;
+    background-color: green;
+    padding: 5px;
+    margin-bottom: -10px;
 }

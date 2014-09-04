@@ -85,7 +85,7 @@
             //check for options and create HTML for the form
 
             var form = document.createElement("form");
-            form.name = "feedbackerForm";
+            form.id = "feedbackerForm";
             form.action = this.settings.action;
             form.method = "post";
             $(feedbackModal).append(form);
@@ -94,7 +94,7 @@
                 var formElement = document.createElement("input");
                 formElement.type = "text";
                 formElement.placeholder = "Name";
-                formElement.name = "name";
+                formElement.id = "name";
                 formElement.className = "formElement";
                 $(form).append(formElement);
             }
@@ -103,7 +103,7 @@
                 var formElement = document.createElement("input");
                 formElement.type = "text";
                 formElement.placeholder = "Email";
-                formElement.name = "email";
+                formElement.id = "email";
                 formElement.className = "formElement";
                 $(form).append(formElement);
             }
@@ -111,7 +111,7 @@
              if (this.settings.message === true) {
                 var formElement = document.createElement("textarea");
                 formElement.value = "Message";
-                formElement.name = "message";
+                formElement.id = "message";
                 formElement.className = "formElement formMessage";
                 $(form).append(formElement);
             }
@@ -132,6 +132,10 @@
                $(this).toggleClass("questionMarkActive");
             });
 
+            $("#message").on("click", function(){
+                if( $(this).val() == "Message" ) $(this).val("");
+            });
+
             //when submit is clicked, send the form to the action
             //proxy allows the scope of 'this' to be correct to access settings
             $(form).submit( $.proxy(this.submitForm, this));
@@ -146,9 +150,35 @@
             var this_ = this;
             var acknowledgement = this_.settings.acknowledgement;
 
+            console.log( this_.settings );
+
+            //if email is required, make sure it has a value
+            if(this_.settings.requireEmail){
+                if ( $("#email").val() == "" ) {
+                    alert("Please enter your email address");
+                    return;
+                }
+            }
+
+            //if name is required, make sure it has a value
+            if(this_.settings.requireName){
+                if ( $("#name").val() == "" ) {
+                    alert("Please enter your name");
+                    return;
+                }
+            }
+
+            //if a message is required, make sure it has a value
+            if(this_.settings.requireMessage){
+                if ( $("#message").val() == "Message" ) {
+                    alert("Please enter a message");
+                    return;
+                }
+            }
+
             $.ajax({
                 url: this.settings.action,
-                data: $(document.getElementsByName("feedbackerForm")).serialize(),
+                data: $("#feedbackerForm").serialize(),
                 type: "post",
                 contentType: "application/json"
             })
@@ -164,6 +194,7 @@
             })
             .always(function(data){
                 console.log(data);
+                $("#feedbackerForm").find("input[type=text], textarea").val("");
                 setTimeout(function(){
                     var modal = $(".feedbackModal");
                     modal.hide();
