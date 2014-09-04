@@ -91,37 +91,37 @@
             $(feedbackModal).append(form);
 
             if (this.settings.name === true) {
-                var formElement = document.createElement("input");
-                formElement.type = "text";
-                formElement.placeholder = "Name";
-                formElement.id = "name";
-                formElement.className = "formElement";
-                $(form).append(formElement);
+                var formName = document.createElement("input");
+                formName.type = "text";
+                formName.placeholder = "Name";
+                formName.id = "name";
+                formName.className = "formElement";
+                $(form).append(formName);
             }
 
             if (this.settings.email === true) {
-                var formElement = document.createElement("input");
-                formElement.type = "text";
-                formElement.placeholder = "Email";
-                formElement.id = "email";
-                formElement.className = "formElement";
-                $(form).append(formElement);
+                var formEmail = document.createElement("input");
+                formEmail.type = "text";
+                formEmail.placeholder = "Email";
+                formEmail.id = "email";
+                formEmail.className = "formElement";
+                $(form).append(formEmail);
             }
 
-             if (this.settings.message === true) {
-                var formElement = document.createElement("textarea");
-                formElement.value = "Message";
-                formElement.id = "message";
-                formElement.className = "formElement formMessage";
-                $(form).append(formElement);
+            if (this.settings.message === true) {
+                var formMessage = document.createElement("textarea");
+                formMessage.value = "Message";
+                formMessage.id = "message";
+                formMessage.className = "formElement formMessage";
+                $(form).append(formMessage);
             }
 
-            var formElement = document.createElement("input");
-            formElement.type = "submit";
-            formElement.value = "Submit";
-            formElement.id = "feedbackerSubmit";
-            formElement.className = "formElement formButton";
-            $(form).append(formElement);
+            var formButton = document.createElement("input");
+            formButton.type = "submit";
+            formButton.value = "Submit";
+            formButton.id = "feedbackerSubmit";
+            formButton.className = "formElement formButton";
+            $(form).append(formButton);
 
             //append the modal div to the element
             $(this.element).append(feedbackModal);
@@ -132,9 +132,13 @@
                $(this).toggleClass("questionMarkActive");
             });
 
-            $("#message").on("click", function(){
-                if( $(this).val() == "Message" ) $(this).val("");
+            //remove textareas content if focused on
+            $("#message").on("click focus", function(){
+                if( $(this).val() === "Message" ) { $(this).val(""); }
             });
+
+            //set autocomplete to off for all form elements
+            $("input, textarea").attr("autocomplete", "off");
 
             //when submit is clicked, send the form to the action
             //proxy allows the scope of 'this' to be correct to access settings
@@ -150,11 +154,9 @@
             var this_ = this;
             var acknowledgement = this_.settings.acknowledgement;
 
-            console.log( this_.settings );
-
             //if email is required, make sure it has a value
             if(this_.settings.requireEmail){
-                if ( $("#email").val() == "" ) {
+                if ( $("#email").val() === "" ) {
                     alert("Please enter your email address");
                     return;
                 }
@@ -162,7 +164,7 @@
 
             //if name is required, make sure it has a value
             if(this_.settings.requireName){
-                if ( $("#name").val() == "" ) {
+                if ( $("#name").val() === "" ) {
                     alert("Please enter your name");
                     return;
                 }
@@ -170,7 +172,7 @@
 
             //if a message is required, make sure it has a value
             if(this_.settings.requireMessage){
-                if ( $("#message").val() == "Message" ) {
+                if ( $("#message").val() === "Message" ) {
                     alert("Please enter a message");
                     return;
                 }
@@ -184,16 +186,13 @@
             })
             .done(function(){
                 //proxy used to pass the global this scope to the next function
-                $.proxy(this_.showResult(acknowledgement), this)
+                $.proxy(this_.showResult(acknowledgement), this);
             })
-            .fail(function(a, b, c){
-                console.log( a + b + c)
-
+            .fail(function(){
                 //proxy used to pass the global this scope to the next function
-                $.proxy(this_.showResult("Uh oh. The feedbackzzzzzz was not submitted successfully. Try again later?"), this)
+                $.proxy(this_.showResult("Uh oh. The feedbackzzzzzz was not submitted successfully. Try again later?"), this);
             })
-            .always(function(data){
-                console.log(data);
+            .always(function(){
                 $("#feedbackerForm").find("input[type=text], textarea").val("");
                 setTimeout(function(){
                     var modal = $(".feedbackModal");
@@ -201,11 +200,10 @@
                     modal.find("form").show();
                     modal.find("h1").remove();
                     $(".questionMark").removeClass("questionMarkActive");
-                }, 3000)
+                }, 3000);
             });
         },
         showResult: function (message) {
-            var this_ = this;
             var modal = $(".feedbackModal");
             modal.find("form").css("display", "none");
             modal.append("<h1>"+message+"</h1>");

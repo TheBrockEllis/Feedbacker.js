@@ -51,10 +51,22 @@ module.exports = function(grunt) {
 		coffee: {
 			compile: {
 				files: {
-					"dist/jquery.boilerplate.js": "src/jquery.boilerplate.coffee"
+					"dist/jquery.feedbacker.js": "src/jquery.feedbacker.coffee"
 				}
 			}
 		},
+
+        // CSS Minification
+       cssmin: {
+            add_banner: {
+                options: {
+                    banner: '/* Feedbacker.js minified css file */'
+                },
+                files: {
+                    'dist/jquery.feedbacker.css': ['src/jquery.feedbacker.css']
+                }
+            }
+        },
 
 		// watch for changes to source
 		// Better than calling grunt a million times
@@ -71,8 +83,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-coffee");
 	grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask("default", ["jshint", "concat", "uglify"]);
+	grunt.registerTask("default", ["jshint", "concat", "uglify", "cssmin"]);
 	grunt.registerTask("travis", ["jshint"]);
 
 };
